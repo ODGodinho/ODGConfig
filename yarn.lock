@@ -224,30 +224,6 @@
     esquery "^1.5.0"
     jsdoc-type-pratt-parser "~4.0.0"
 
-"@esbuild-kit/cjs-loader@^2.4.2":
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/@esbuild-kit/cjs-loader/-/cjs-loader-2.4.2.tgz#cb4dde00fbf744a68c4f20162ea15a8242d0fa54"
-  integrity sha512-BDXFbYOJzT/NBEtp71cvsrGPwGAMGRB/349rwKuoxNSiKjPraNNnlK6MIIabViCjqZugu6j+xeMDlEkWdHHJSg==
-  dependencies:
-    "@esbuild-kit/core-utils" "^3.0.0"
-    get-tsconfig "^4.4.0"
-
-"@esbuild-kit/core-utils@^3.0.0", "@esbuild-kit/core-utils@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@esbuild-kit/core-utils/-/core-utils-3.2.2.tgz#ac3fe38d6ddcb3aa4658425034bb7a9cefa83495"
-  integrity sha512-Ub6LaRaAgF80dTSzUdXpFLM1pVDdmEVB9qb5iAzSpyDlX/mfJTFGOnZ516O05p5uWWteNviMKi4PAyEuRxI5gA==
-  dependencies:
-    esbuild "~0.18.20"
-    source-map-support "^0.5.21"
-
-"@esbuild-kit/esm-loader@^2.5.5":
-  version "2.5.5"
-  resolved "https://registry.yarnpkg.com/@esbuild-kit/esm-loader/-/esm-loader-2.5.5.tgz#b82da14fcee3fc1d219869756c06f43f67d1ca71"
-  integrity sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==
-  dependencies:
-    "@esbuild-kit/core-utils" "^3.0.0"
-    get-tsconfig "^4.4.0"
-
 "@esbuild/android-arm64@0.18.20":
   version "0.18.20"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.18.20.tgz#984b4f9c8d0377443cc2dfcef266d02244593622"
@@ -595,9 +571,9 @@
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
 "@types/node@*", "@types/node@^20.5.7":
-  version "20.6.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.6.0.tgz#9d7daa855d33d4efec8aea88cd66db1c2f0ebe16"
-  integrity sha512-najjVq5KN2vsH2U/xyh2opaSEz6cZMR2SetLIlxlj08nOcmPOemJmUK2o4kUzfLqfrWE0PIrNeE16XhYDd3nqg==
+  version "20.6.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.6.1.tgz#8b589bba9b2af0128796461a0979764562687e6f"
+  integrity sha512-4LcJvuXQlv4lTHnxwyHQZ3uR9Zw2j7m1C9DfuwoTFQQP4Pmu04O6IfLYgMmHoOCt0nosItLLZAH+sOrRE0Bo8g==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -1090,11 +1066,6 @@ browserslist@^4.21.9:
     electron-to-chromium "^1.4.477"
     node-releases "^2.0.13"
     update-browserslist-db "^1.0.11"
-
-buffer-from@^1.0.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
-  integrity sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==
 
 buffer@^5.5.0:
   version "5.7.1"
@@ -1594,7 +1565,7 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild@^0.18.10, esbuild@~0.18.20:
+esbuild@^0.18.10:
   version "0.18.20"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.18.20.tgz#4709f5a34801b43b799ab7d6d82f7284a9b7a7a6"
   integrity sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA==
@@ -2237,7 +2208,7 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-get-tsconfig@^4.4.0, get-tsconfig@^4.5.0:
+get-tsconfig@^4.5.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.7.0.tgz#06ce112a1463e93196aa90320c35df5039147e34"
   integrity sha512-pmjiZ7xtB8URYm74PlGJozDNyhvsVLUcpBa8DZBG3bWHwaHa9bPiRpiSfovw+fjhwONSCWKRyk+JQHEGZmMrzw==
@@ -3825,15 +3796,7 @@ source-map-js@^1.0.2:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
-source-map-support@^0.5.21:
-  version "0.5.21"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.21.tgz#04fe7c7f9e1ed2d662233c28cb2b35b9f63f6e4f"
-  integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
-  dependencies:
-    buffer-from "^1.0.0"
-    source-map "^0.6.0"
-
-source-map@^0.6.0, source-map@^0.6.1:
+source-map@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
@@ -4150,17 +4113,6 @@ tsutils@^3.21.0:
   integrity sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==
   dependencies:
     tslib "^1.8.1"
-
-tsx@^3.12.7:
-  version "3.12.8"
-  resolved "https://registry.yarnpkg.com/tsx/-/tsx-3.12.8.tgz#e9ec95c6b116e28f0187467f839029a3ce17a851"
-  integrity sha512-Lt9KYaRGF023tlLInPj8rgHwsZU8qWLBj4iRXNWxTfjIkU7canGL806AqKear1j722plHuiYNcL2ZCo6uS9UJA==
-  dependencies:
-    "@esbuild-kit/cjs-loader" "^2.4.2"
-    "@esbuild-kit/core-utils" "^3.2.2"
-    "@esbuild-kit/esm-loader" "^2.5.5"
-  optionalDependencies:
-    fsevents "~2.3.2"
 
 tunnel-agent@^0.6.0:
   version "0.6.0"
