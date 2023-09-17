@@ -18,12 +18,12 @@ export interface ConfigInterface<ConfigTypes = Record<string, unknown>> {
      *
      * @template {keyof ConfigTypes} Config Config Name
      * @param {Config} $key Config key
-     * @param {() => Promise<ConfigTypes[Config]>} $default Default config value
+     * @param {() => ConfigTypes[Config] | Promise<ConfigTypes[Config]>} $default Default config value
      * @returns {Promise<ConfigTypes[Config]>}
      */
     get<Config extends keyof ConfigTypes>(
         $key: Config,
-        $default?: () => Promise<ConfigTypes[Config]>,
+        $default?: () => ConfigTypes[Config] | Promise<ConfigTypes[Config]>,
     ): Promise<ConfigTypes[Config]>;
 
     /**

@@ -6,20 +6,20 @@
         />
     </a>
     <br />
-    Stanley The Template For Typescript By Dragons Gamers
+    Config Package
     <br />
 </h1>
 
-<h4 align="center">Template Stanley for Typescript projects and packages 📦!</h4>
+<h4 align="center">Config packages 📦, Using Stanley the template!</h4>
 
 <p align="center">
 
-[![codecov](https://codecov.io/gh/ODGodinho/Stanley-TheTemplate-Typescript/branch/main/graph/badge.svg?token=HNBNLLPZ3J)](https://codecov.io/gh/ODGodinho/Stanley-TheTemplate-Typescript)
-[![Stargazers](https://img.shields.io/github/stars/ODGodinho/Stanley-TheTemplate-Typescript?color=F430A4)](https://github.com/ODGodinho/Stanley-TheTemplate-Typescript/stargazers)
+[![codecov](https://codecov.io/gh/ODGodinho/ODGConfig/branch/main/graph/badge.svg?token=HNBNLLPZ3J)](https://codecov.io/gh/ODGodinho/ODGConfig)
+[![Stargazers](https://img.shields.io/github/stars/ODGodinho/ODGConfig?color=F430A4)](https://github.com/ODGodinho/ODGConfig/stargazers)
 [![Made by ODGodinho](https://img.shields.io/badge/made%20by-ODGodinho-%2304A361)](https://www.linkedin.com/in/victor-alves-odgodinho/)
-[![Forks](https://img.shields.io/github/forks/ODGodinho/Stanley-TheTemplate-Typescript?color=CD4D34)](https://github.com/ODGodinho/Stanley-TheTemplate-Typescript/network/members)
-![Repository size](https://img.shields.io/github/repo-size/ODGodinho/Stanley-TheTemplate-Typescript)
-[![GitHub last commit](https://img.shields.io/github/last-commit/ODGodinho/Stanley-TheTemplate-Typescript)](https://github.com/ODGodinho/Stanley-TheTemplate-Typescript/commits/master)
+[![Forks](https://img.shields.io/github/forks/ODGodinho/ODGConfig?color=CD4D34)](https://github.com/ODGodinho/ODGConfig/network/members)
+![Repository size](https://img.shields.io/github/repo-size/ODGodinho/ODGConfig)
+[![GitHub last commit](https://img.shields.io/github/last-commit/ODGodinho/ODGConfig)](https://github.com/ODGodinho/ODGConfig/commits/master)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/MIT)
 [![StyleCI](https://github.styleci.io/repos/562306382/shield?branch=main)](https://github.styleci.io/repos/562306382?branch=main)
 
@@ -28,19 +28,15 @@
 # Table of Contents
 
 - [🎇 Benefits](#-benefits)
-- [📗 Libraries](#-libraries)
 - [📁 Dependencies](#-dependencies)
 - [⏩ Get Started](#-get-started)
-  - [🔘 Use Template](#-use-template)
-  - [🔑 Configure Github Secrets](#-configure-github-secrets)
-    - [🙈 Create Github Token](#-create-github-token)
-    - [🍀 Code Coverage](#-code-coverage)
-    - [📦 Create NPM Token](#-create-npm-token)
-    - [🔐 Create project Environment](#-create-project-environment)
-  - [💻 Prepare to develop](#-prepare-to-develop)
-  - [📍 Start Project](#-start-project)
-  - [📨 Build and Run](#-build-and-run)
-  - [🧪 Teste Code](#-teste-code)
+  - [🔘 Example Usage](#-example-usage)
+  - [🧲 Get Configs](#-get-configs)
+  - [💌 Send Configs to class](#-send-configs-to-class)
+- [💻 Prepare to develop](#-prepare-to-develop)
+- [📍 Start Project](#-start-project)
+- [📨 Build and Run](#-build-and-run)
+- [🧪 Test Code](#-test-code)
 
 ---
 
@@ -56,77 +52,81 @@
     ![Code Coverage example](https://app.codecov.io/static/media/codecov-report.eeef5dba5ea18b5ed6a4.png)
 - 📦 Automatic Package and release generate on merge
 - 🪝 Run Lint/Test command pre-commit execute
-
-## 📗 Libraries
-
-- [Node.js 18](https://nodejs.org/?n=dragonsgamers)
-- [Typescript](https://www.typescriptlang.org/?n=dragonsgamers)
-- [Eslint](https://eslint.org/?n=dragonsgamers)
-- [ODG-Linter-JS](https://github.com/ODGodinho/ODG-Linter-Js?n=dragonsgamers)
-- [EditorConfig](https://editorconfig.org/?n=dragonsgamers)
-- [ReviewDog](https://github.com/reviewdog/action-eslint)
+- ⚙️ IOT/IOC (Inversion of Control) for easy use of libraries
 
 ## 📁 Dependencies
 
 - [Node.js](https://nodejs.org) 18 or later
 - [Yarn](https://yarnpkg.com/) Optional/Recommended
-- [ODG TsConfig](https://github.com/ODGodinho/tsconfig) Last Version
 
 ## ⏩ Get Started
 
 ---
 
-### 🔘 Use Template
+### 🔘 Example Usage
 
-Click in use this template button and clone your template project
+Create new instance config class
 
-![Use Template](https://raw.githubusercontent.com/ODGodinho/Stanley-TheTemplate/main/public/images/UseTemplate.png)
+```typescript
+// Example transform config with zod
+const zBoolean = zod.union([
+    zod.string().transform((value): boolean => value === "true" || value === "1"),
+    zod.boolean(),
+]);
 
-### 🔑 Configure Github Secrets
+const myValidator = zod.object({
+    USE_HTTPS: zBoolean,
+    OPTIONAL: zod.string().optional(),
+});
 
-#### 🙈 Create Github Token
+// Container Instance Configuration
 
-Before create new GITHUB_TOKEN in
+const config = new JsonConfig<zod.infer<typeof myValidator>>({ ...process.env }, validator);
+await config.init();
+```
 
-- <https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token>
+### 🧲 Get Configs
 
-#### 🍀 Code Coverage
+```typescript
+const config: ConfigInterface;
 
-Add Code Coverage support in your project
+// Get Configs
+const useHttps = await config.get("USE_HTTPS");
+const optional = await config.get("OPTIONAL", () => "default value");
 
-1. Install CodeCov in your account <https://github.com/apps/codecov>
-2. Enter In <https://app.codecov.io/gh/+> and search your repository
-3. Click `setup repo`
-4. Copy CODECOV_TOKEN and create a secret called CODECOV_TOKEN
+// Has Config
+if (await config.has("OPTIONAL")) {
+    // Config key exists
+}
 
-#### 📦 Create NPM Token
+// set Config
+await config
+    .set("OPTIONAL", "filled")
+    .set("USE_HTTPS", false);
 
-if you want to generate packages create a secret called IS_PACKAGE = true AND create new NPM_TOKEN in
+// All Configs
+const all = config.all(); // Return Json with configs
 
-- <https://docs.npmjs.com/creating-and-viewing-access-tokens>
+// Prepare class to use
+const all = config.init();
+```
 
-#### 🔐 Create project Environment
+### 💌 Send Configs to class
 
-- On GitHub.com, navigate to the main page of the repository.
-- Under your repository name, click `⚙️ Settings`.
-![Github Setting images example](https://docs.github.com/assets/cb-27528/images/help/repository/repo-actions-settings.png)
-- In the "Security" section of the sidebar, select `✳️ Secrets`, then click Actions.
-- Click New repository secret.
-- Type a name with: **GH_TOKEN**
-- Enter with your access secret token `ghp_Dsfde....`
-- Click Add secret.
-- If you are going to publish package:
-  - secrets:
-    - create **NPM_TOKEN** = `npm_szxw......`
-    - create **CODECOV_TOKEN** = `00000000-0000-0000-0000-000000000000`
-  - variables:
-    - create **IS_PACKAGE** = `true`
+> For packages and SDK, always prefer to send an object instead of the entire config class
 
-### 💻 Prepare To Develop
+```typescript
+new PackageClass({
+    timeout: await config.get("DEFAULT_TIMEOUT", () => 1000),
+    attempt: await config.get("ATTEMPT"),
+})
+```
+
+## 💻 Prepare To Develop
 
 Copy `.env.example` to `.env` and add the values according to your needs.
 
-### 📍 Start Project
+## 📍 Start Project
 
 First install dependencies with the following command
 
@@ -143,12 +143,10 @@ To build the project, you can use the following command
 > if you change files, you need to run `yarn build` and `yarn start` again
 
 ```bash
-yarn build && yarn start
-# or
-yarn dev
+yarn build && yarn test
 ```
 
-## 🧪 Teste Code
+## 🧪 Test Code
 
 To Test execute this command
 

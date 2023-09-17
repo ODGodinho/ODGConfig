@@ -3,7 +3,9 @@
         "baseUrl": ".",
         "outDir": "./dist",
         "paths": {
-            "#types/*": [ "./@types/*" ]
+            "#types/*": [ "./@types/*" ],
+            "@interfaces": [ "./src/interfaces" ],
+            "@interfaces/*": [ "./src/interfaces/*" ]
         },
         "rootDirs": [
             ".",
