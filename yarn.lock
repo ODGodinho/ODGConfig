@@ -517,9 +517,9 @@
     comment-parser "*"
 
 "@odg/tsconfig@*":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@odg/tsconfig/-/tsconfig-1.2.0.tgz#d3e8128220f196a652d9138b1b0802ececafd135"
-  integrity sha512-vMAYFdfllV7a50YUygfGC52xfGAY0VO2ytdlXdmMxVnBWN789glhXAkJvJp08eb+fm92gamTwmEgPNLeEuk2yw==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@odg/tsconfig/-/tsconfig-1.2.1.tgz#51fee19e7b5a34296962ec62c7c06a70798c041e"
+  integrity sha512-1/CCGqV2Oge97/SSAcGV2Wxs4j6YOeHwMLkooBLpi+mm+EaOLma/YAKq6YbDEvaOh3xpQPf1QYY5/eHY3YOqLQ==
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
