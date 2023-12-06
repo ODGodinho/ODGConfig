@@ -4,13 +4,12 @@ export class JsonConfig<
     ConfigTypes extends Record<number | string | symbol, unknown>,
 > implements ConfigInterface<ConfigTypes> {
 
-    private configs: ConfigTypes;
+    protected configs!: ConfigTypes;
 
     public constructor(
-        private readonly data: ConfigTypes | Record<string, unknown>,
-        private readonly validator: ValidatorInterface<ConfigTypes>,
+        protected readonly data: ConfigTypes | Record<string, unknown>,
+        protected readonly validator: ValidatorInterface<ConfigTypes>,
     ) {
-        this.configs = this.validator.parse(this.data);
     }
 
     public async has($key: keyof ConfigTypes): Promise<boolean> {
@@ -40,7 +39,7 @@ export class JsonConfig<
     }
 
     public async init(): Promise<void> {
-        // Not Action is required
+        this.configs = this.validator.parse(this.data);
     }
 
 }
