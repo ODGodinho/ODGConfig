@@ -1,7 +1,8 @@
 import zod from "zod";
 
 import { type ConfigInterface } from "@interfaces";
-import { JsonConfig } from "src/configs/JsonConfig";
+
+import { JsonConfig } from "../../src";
 
 describe("Example Teste", () => {
     const validator = zod.object({
@@ -11,10 +12,11 @@ describe("Example Teste", () => {
     let config: ConfigInterface<zod.infer<typeof validator>>;
     const exampleValue = "123";
 
-    beforeAll(() => {
+    beforeAll(async () => {
         config = new JsonConfig<zod.infer<typeof validator>>({
             example: exampleValue,
         }, validator);
+        await config.init();
     });
 
     test("Test Invalid Validator", async () => {
@@ -22,10 +24,10 @@ describe("Example Teste", () => {
             example: zod.string(),
         });
 
-        expect(() => new JsonConfig<zod.infer<typeof invalidValidator>>(
+        await expect(new JsonConfig<zod.infer<typeof invalidValidator>>(
             { example: 123 },
             invalidValidator,
-        )).toThrow();
+        ).init()).rejects.toThrow();
     });
 
     test.concurrent("Test has Key", async () => {
@@ -47,6 +49,7 @@ describe("Example Teste", () => {
         const otherConfig = new JsonConfig<zod.infer<typeof validator>>({
             example: exampleValue,
         }, validator);
+        await otherConfig.init();
 
         await expect(otherConfig.set("example2", "000")).resolves.toBe(otherConfig);
         await expect(otherConfig.get("example2")).resolves.toBe("000");
@@ -59,9 +62,5 @@ describe("Example Teste", () => {
         await expect(config.all()).resolves.toMatchObject({
             example: exampleValue,
         });
-    });
-
-    test.concurrent("Test init config", async () => {
-        await expect(config.init()).resolves.toBeUndefined();
     });
 });

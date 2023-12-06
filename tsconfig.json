@@ -5,7 +5,8 @@
         "paths": {
             "#types/*": [ "./@types/*" ],
             "@interfaces": [ "./src/interfaces" ],
-            "@interfaces/*": [ "./src/interfaces/*" ]
+            "@interfaces/*": [ "./src/interfaces/*" ],
+            "~/*": [ "./src/*" ]
         },
         "rootDirs": [
             ".",
