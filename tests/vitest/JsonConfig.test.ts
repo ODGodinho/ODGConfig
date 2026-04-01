@@ -1,6 +1,6 @@
 import zod from "zod";
 
-import { type ConfigInterface } from "@interfaces";
+import type { ConfigInterface } from "@interfaces";
 
 import { JsonConfig } from "../../src";
 
@@ -9,7 +9,7 @@ describe("Example Teste", () => {
         example: zod.string().optional(),
         example2: zod.string().optional(),
     });
-    let config: ConfigInterface<zod.infer<typeof validator>>;
+    let config: ConfigInterface;
     const exampleValue = "123";
 
     beforeAll(async () => {
@@ -49,6 +49,7 @@ describe("Example Teste", () => {
         const otherConfig = new JsonConfig<zod.infer<typeof validator>>({
             example: exampleValue,
         }, validator);
+
         await otherConfig.init();
 
         await expect(otherConfig.set("example2", "000")).resolves.toBe(otherConfig);

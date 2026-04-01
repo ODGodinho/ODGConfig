@@ -14,9 +14,10 @@
         ],
         "typeRoots": [
             "./src/@types",
-            "node_modules/@types"
+            "node_modules/@types",
+            "./node_modules"
         ],
-        "types": [ "node" ]
+        "types": [ "node", "vitest/globals" ]
     },
     "exclude": [
         "node_modules/",

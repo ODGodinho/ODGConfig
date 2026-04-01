@@ -11,12 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [ 18 ]
+        version: [ 24 ]
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Yarn Corepack
+        run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.version }}
@@ -30,8 +32,8 @@ jobs:
         with:
           reporter: github-pr-review
           github_token: ${{ secrets.GH_TOKEN }}
-          eslint_flags: '--ext .js,.jsx,.ts,.tsx,.json,.jsonc,.json5,.yml,.yaml,.xml,.txt,.svg,.properties,.gradle,.java,.cpp,.c,.cs,.html,.css,.groovy,.gitignore,.npmignore,.toml,.env,.example,.sample,.ini,.php,.bat,.powershell,.ps1,.sh,.bash,.eslintrc .'
-          fail_on_error: true
+          eslint_flags: .
+          fail_level: error
       - name: Build Code
         run: yarn build
       - name: Run Tests
@@ -45,11 +47,8 @@ jobs:
           fail_ci_if_error: true
           verbose: true
       - if: ${{ github.event_name == 'push' && vars.IS_PACKAGE == 'true' }}
-        name: Install semantic release
-        run: yarn global add semantic-release
-      - if: ${{ github.event_name == 'push' && vars.IS_PACKAGE == 'true' }}
         name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: semantic-release
+        run: yarn dlx semantic-release

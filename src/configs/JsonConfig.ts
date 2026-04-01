@@ -1,4 +1,4 @@
-import { type ValidatorInterface, type ConfigInterface } from "@interfaces";
+import type { ConfigInterface, ValidatorInterface } from "@interfaces";
 
 export class JsonConfig<
     ConfigTypes extends Record<number | string | symbol, unknown>,
@@ -10,6 +10,7 @@ export class JsonConfig<
         protected readonly data: ConfigTypes | Record<string, unknown>,
         protected readonly validator: ValidatorInterface<ConfigTypes>,
     ) {
+        this.configs = data as ConfigTypes;
     }
 
     public async has($key: keyof ConfigTypes): Promise<boolean> {
@@ -18,7 +19,7 @@ export class JsonConfig<
 
     public async get<Config extends keyof ConfigTypes>(
         $key: Config,
-        $default?: (() => Promise<ConfigTypes[Config]>) | undefined,
+        $default?: () => Promise<ConfigTypes[Config]>,
     ): Promise<ConfigTypes[Config]> {
         return this.configs[$key.toString()] === undefined
             ? $default?.() ?? this.configs[$key]
